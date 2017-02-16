@@ -6,7 +6,7 @@ var Test = (function () {
     }
     Test.prototype.showAlert = function () {
         var o = new app_component_1.AnotherClass();
-        o.showMessage("ARUN THAKUR IS BEST");
+        o.showMessage("Hello world, Arun Thakur");
     };
     return Test;
 }());

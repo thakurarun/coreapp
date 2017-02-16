@@ -4,7 +4,7 @@ import '../Views/styles.scss';
 class Test {
     showAlert() {
         let o = new AnotherClass();
-        o.showMessage("ARUN THAKUR IS BEST");
+        o.showMessage("Hello world, Arun Thakur");
     }
 }
 
