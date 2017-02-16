@@ -1,0 +1,10 @@
+﻿@import '../variables.scss';
+
+body {
+    margin: 70px;
+    background-color: $mainColor;
+
+    h1 {
+        color: $textColor;
+    }
+}
