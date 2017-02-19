@@ -14,6 +14,7 @@ namespace src.ViewModel
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
+        [Compare(nameof(Password),ErrorMessage ="Confirm password not matched")]
         public string ConfirmPassword { get; set; }
     }
 }

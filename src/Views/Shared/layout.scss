@@ -12,6 +12,26 @@ body {
     background-color: $mainColor;
     line-height: $lineheight;
 
+    .header {
+        background-color: $headerColor;
+
+        .menu-item {
+            background-color: $menuItemColor;
+
+            a {
+                color: $linkTextColor;
+            }
+        }
+
+        .menu-item:hover {
+            background-color: $menuItemHoverColor;
+
+            a {
+                color: $linkTextHoverColor;
+            }
+        }
+    }
+
     .link {
         display: flex;
         flex-direction: column;
@@ -45,5 +65,18 @@ body {
         -webkit-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
         -moz-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
         box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
+    }
+
+    .field-validation-error {
+        span {
+            color: $errorTextColor;
+        }
+    }
+
+    .validation-summary-errors {
+        li {
+            color: $errorTextColor;
+            list-style:none;
+        }
     }
 }

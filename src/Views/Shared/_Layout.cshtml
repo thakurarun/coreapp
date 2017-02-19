@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - src</title>
+    <title>@ViewData["Title"] - Blue Box</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -20,21 +20,25 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body class="application">
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top header">
         <div class="container">
             <ul class="nav nav-tabs pull-right">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
+                <li role="presentation" class="menu-item"><a href="#">Home</a></li>
+                <li role="presentation" class="menu-item"><a href="#">Profile</a></li>
+                <li role="presentation" class="menu-item"><a href="#">Messages</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li role="presentation" class="menu-item">
+                        @Html.ActionLink("Logout", "Logout", "Auth", null, new { @class = "plain-text link" })
+                    </li>
+                }
             </ul>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
     </div>
-    <footer>
-
-    </footer>
+    <footer></footer>
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

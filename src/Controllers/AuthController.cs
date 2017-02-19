@@ -41,6 +41,7 @@ namespace src.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model, string returnUrl)
         {
+            ModelState.Remove($"{nameof(model.ConfirmPassword)}");
             if (ModelState.IsValid)
             {
                 var signInResult = await _signInManager.PasswordSignInAsync(model.Username,
@@ -63,7 +64,7 @@ namespace src.Controllers
             {
                 ModelState.AddModelError("ModelInvalid", "Some field are incorrect.");
             }
-            return View("Index");
+            return View("Index", model);
         }
 
         public async Task<IActionResult> Logout()

@@ -6,14 +6,24 @@ body {
 .application {
   font-size: 1.5em;
   margin: 70px;
-  background-color: rgba(13, 28, 70, 0.72);
+  background-color: #f5eeee;
   line-height: 1.5em; }
+  .application .header {
+    background-color: #3b5998; }
+    .application .header .menu-item {
+      background-color: #4a4949; }
+      .application .header .menu-item a {
+        color: #f8f8f8; }
+    .application .header .menu-item:hover {
+      background-color: #462c2c; }
+      .application .header .menu-item:hover a {
+        color: #3b5998; }
   .application .link {
     display: flex;
     flex-direction: column;
     justify-content: center; }
   .application .plain-text {
-    color: #ffffff; }
+    color: #3b5998; }
   .application .btn-separator:after {
     content: ' ';
     display: inline-flex;
@@ -32,22 +42,27 @@ body {
     -webkit-box-shadow: 38px 35px 54px -5px rgba(0, 0, 0, 0.28);
     -moz-box-shadow: 38px 35px 54px -5px rgba(0, 0, 0, 0.28);
     box-shadow: 38px 35px 54px -5px rgba(0, 0, 0, 0.28); }
+  .application .field-validation-error span {
+    color: #b22a2a; }
+  .application .validation-summary-errors li {
+    color: #b22a2a;
+    list-style: none; }
 
 p {
-  color: #ffffff; }
+  color: #3b5998; }
 
 .form-center {
   display: flex;
   align-items: center;
   flex-direction: column; }
   .form-center form .control-label {
-    color: #ffffff; }
+    color: #3b5998; }
   .form-center form .btn {
     float: right; }
   .form-center .other {
     justify-content: space-around; }
     .form-center .other a {
-      color: #ffffff;
+      color: #3b5998;
       cursor: pointer; }
 
 /*# sourceMappingURL=appStyles.css.map*/
