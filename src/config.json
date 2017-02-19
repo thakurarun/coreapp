@@ -1,0 +1,6 @@
+﻿{
+  "ConnectionStrings": {
+    "MyApplicationContextConnection": 
+      "Data Source=DESKTOP-7IE0BK1;Initial Catalog=Core;Integrated Security=True"
+  }
+}

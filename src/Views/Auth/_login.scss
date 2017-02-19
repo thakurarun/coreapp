@@ -1,0 +1,26 @@
+﻿@import '../variables.scss';
+
+.form-center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    form {
+        .control-label {
+            color: $textColor;
+        }
+
+        .btn {
+            float: right;
+        }
+    }
+
+    .other {
+        justify-content: space-around;
+
+        a {
+            color: $textColor;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,4 +1,10 @@
 published
+
 src/bin
 src/node_modules
 src/obj
+src/_tranpiled
+
+Database/bin
+Database/Migrations
+Database/obj

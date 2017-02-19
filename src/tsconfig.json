@@ -8,7 +8,9 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es5",
-    "watch": false
+    "watch": false,
+    "rootDir": "Content",
+    "outDir": "_tranpiled" // this folder is not used, it is a hack to ignore transpiled js genrated by IDE.
   },
   "exclude": [
     "node_modules",

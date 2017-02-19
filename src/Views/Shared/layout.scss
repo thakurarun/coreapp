@@ -1,10 +1,49 @@
 ﻿@import '../variables.scss';
 
 body {
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-family: $familyFont;
+    font-style: normal;
+}
+
+.application {
+    font-size: 1.5em;
     margin: 70px;
     background-color: $mainColor;
+    line-height: $lineheight;
 
-    h1 {
+    .link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .plain-text {
         color: $textColor;
+    }
+
+    .btn-separator:after {
+        content: ' ';
+        display: inline-flex;
+        flex-direction: row;
+        background: #ADADAD;
+        margin: 0px 5px;
+        height: $lineheight;
+        width: 1px;
+    }
+
+
+    .btn-container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .form-box {
+        padding: 25px;
+        border-radius: 5px;
+        -webkit-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
+        -moz-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
+        box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
     }
 }

@@ -1,0 +1,28 @@
+@model src.ViewModel.LoginModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="form-center">
+    <h3 class="plain-text">
+        Register
+    </h3>
+    @using (Html.BeginForm("RegisterNew", "Login", FormMethod.Post, htmlAttributes: new { @class = "register form-box", role = "form" }))
+    {
+        <div class="form-group">
+            <label class="control-label" for="username">Email address</label>
+            @Html.TextBoxFor(model => model.LoginData.Username, htmlAttributes: new { @type = "email", @class = "form-control", @placeholder = "Enter Email" })
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            @Html.PasswordFor(model => model.LoginData.Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password" })
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="confirmPassword">Confirm Password</label>
+            @Html.PasswordFor(model => model.LoginData.ConfirmPassword, htmlAttributes: new { @class = "form-control", @placeholder = "Confirm Password" })
+        </div>
+        <div class="btn-container">
+            <button type="submit" class="btn btn-default">Register</button>
+            @Html.ActionLink("Cancel", "Index", null, null, new { @class = "plain-text link" })
+        </div>
+    }
+</div>

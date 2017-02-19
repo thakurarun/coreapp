@@ -7,27 +7,49 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Database.Repository;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Database.Entities;
+using Database;
 
 namespace src
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"config.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration);
+
+            services.AddIdentity<BoxIdentityUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 6;
+                config.Password.RequireDigit = false;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireUppercase= false;
+                config.Password.RequireNonAlphanumeric= false;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Index";
+            })
+            .AddEntityFrameworkStores<BlueBoxContext>();
+
             // Add framework services.
+            services.AddDbContext<Database.BlueBoxContext>();
+            services.AddScoped<IBoxUserRepository, BoxUserRepository>();
+
             services.AddMvc();
         }
 
@@ -43,7 +65,7 @@ namespace src
 
                 // Browser Link is not compatible with Kestrel 1.1.0
                 // For details on enabling Browser Link, see https://go.microsoft.com/fwlink/?linkid=840936
-                // app.UseBrowserLink();
+                app.UseBrowserLink();
             }
             else
             {
@@ -51,6 +73,8 @@ namespace src
             }
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

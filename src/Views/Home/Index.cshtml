@@ -2,4 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<p>Hello World!</p>
+<p id="content"></p>
+
+<span>@User.Identity.Name</span>
+
+@Html.ActionLink("Logout","Logout","Auth",null, new { @class = "plain-text link" })
