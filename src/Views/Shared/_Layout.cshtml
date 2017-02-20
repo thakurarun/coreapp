@@ -22,10 +22,16 @@
 <body class="application">
     <nav class="navbar navbar-default navbar-fixed-top header">
         <div class="container">
+            <div class="logo pull-left">
+                <img src="~/images/blue-logo.png"/>
+            </div>
             <ul class="nav nav-tabs pull-right">
-                <li role="presentation" class="menu-item"><a href="#">Home</a></li>
-                <li role="presentation" class="menu-item"><a href="#">Profile</a></li>
-                <li role="presentation" class="menu-item"><a href="#">Messages</a></li>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li role="presentation" class="menu-item active"><a href="#">Sign In</a></li>
+                    <li role="presentation" class="menu-item"><a href="#">Pricing</a></li>
+                }
+                <li role="presentation" class="menu-item"><a href="#">Contact</a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li role="presentation" class="menu-item">
@@ -35,7 +41,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
     </div>
     <footer></footer>

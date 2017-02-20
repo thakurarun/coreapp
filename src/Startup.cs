@@ -11,15 +11,20 @@ using Database.Repository;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Database.Entities;
 using Database;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace src
 {
     public class Startup
     {
+        private IHostingEnvironment _env;
+
         public IConfigurationRoot Configuration { get; }
 
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -42,7 +47,7 @@ namespace src
                 config.Password.RequireLowercase = false;
                 config.Password.RequireUppercase= false;
                 config.Password.RequireNonAlphanumeric= false;
-                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Index";
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
             })
             .AddEntityFrameworkStores<BlueBoxContext>();
 
@@ -50,7 +55,16 @@ namespace src
             services.AddDbContext<Database.BlueBoxContext>();
             services.AddScoped<IBoxUserRepository, BoxUserRepository>();
 
-            services.AddMvc();
+            services.AddMvc(config =>
+            {
+                if (_env.IsProduction())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            }).AddJsonOptions(config =>
+            {
+                config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

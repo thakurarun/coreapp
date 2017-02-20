@@ -2,6 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<p id="content"></p>
-
-<span>@User.Identity.Name</span>
+<div class="dashboard">
+    <div class="leftpane">
+        @Html.Partial("Sidebar")
+    </div>
+    <div class="container main-content">
+        @Html.Partial("Profile")
+    </div>
+</div>

@@ -24,17 +24,13 @@ namespace src.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Index()
+
+        public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("index", "home");
             }
-            return View(model);
-        }
-
-        public IActionResult Register()
-        {
             return View(model);
         }
 
@@ -51,20 +47,25 @@ namespace src.Controllers
                 {
                     if (!string.IsNullOrEmpty(returnUrl))
                     {
-                        return RedirectToAction(returnUrl);
+                        return Redirect(returnUrl);
                     }
                     return RedirectToAction("index", "home");
                 }
                 else
                 {
-                    ModelState.AddModelError("InvalidCredential", "Username or password is incorrect");
+                    ModelState.AddModelError(string.Empty, "Username or password is incorrect");
                 }
             }
             else
             {
                 ModelState.AddModelError("ModelInvalid", "Some field are incorrect.");
             }
-            return View("Index", model);
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View(model);
         }
 
         public async Task<IActionResult> Logout()

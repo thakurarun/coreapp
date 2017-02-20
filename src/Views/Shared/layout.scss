@@ -1,19 +1,32 @@
 ﻿@import '../variables.scss';
 
-body {
+html, body {
     /*font-family: 'Open Sans', sans-serif;*/
     font-family: $familyFont;
-    font-style: normal;
+    height: 100%;
 }
 
 .application {
     font-size: 1.5em;
-    margin: 70px;
+    margin-top: 53px;
     background-color: $mainColor;
     line-height: $lineheight;
 
+    a{
+        cursor:pointer;
+    }
+
     .header {
         background-color: $headerColor;
+        border-bottom-width: 3px;
+        border-color: $formBackgroundColor;
+
+        .logo {
+            img {
+                background-color: $formBackgroundColor;
+                height: 50px;
+            }
+        }
 
         .menu-item {
             background-color: $menuItemColor;
@@ -21,13 +34,21 @@ body {
             a {
                 color: $linkTextColor;
             }
-        }
 
-        .menu-item:hover {
-            background-color: $menuItemHoverColor;
+            &:hover {
+                background-color: $menuItemHoverColor;
 
-            a {
-                color: $linkTextHoverColor;
+                a {
+                    color: $linkTextHoverColor;
+                }
+            }
+
+            &.active {
+                a {
+                    color: $linkTextHoverColor;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
             }
         }
     }
@@ -62,6 +83,7 @@ body {
     .form-box {
         padding: 25px;
         border-radius: 5px;
+        background-color: $formBackgroundColor;
         -webkit-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
         -moz-box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
         box-shadow: 38px 35px 54px -5px rgba(0,0,0,0.28);
@@ -76,7 +98,7 @@ body {
     .validation-summary-errors {
         li {
             color: $errorTextColor;
-            list-style:none;
+            list-style: none;
         }
     }
 }

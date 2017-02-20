@@ -48,6 +48,7 @@ namespace Database.Repository
             var identity = await _userManager.CreateAsync(boxUser, password);
             if (identity.Succeeded)
             {
+                user.CreationDate = DateTime.UtcNow;
                 await _context.BoxUserProfiles.AddAsync(user);
                 await _context.SaveChangesAsync();
                 return identity.Succeeded;
@@ -55,6 +56,23 @@ namespace Database.Repository
             throw new Exception($"{nameof(AddNewUser)}:" +
                 $" User identity not created");
         }
+
+        public bool SaveProfile(BoxUserProfile profile)
+        {
+            var data = _context.BoxUserProfiles.FirstOrDefault(_profile => _profile.Id == profile.Id);
+            if (data != null)
+            {
+                data.FirstName = profile.FirstName;
+                data.LastName = profile.LastName;
+                data.Contact = profile.Contact;
+                data.Active = true;
+                data.ModifiedDate = DateTime.UtcNow;
+                _context.Update(data);
+            }
+            _context.SaveChanges();
+            return true;
+        }
+
         #endregion
 
         #region Get
@@ -67,6 +85,16 @@ namespace Database.Repository
         {
             return _context.BoxUserProfiles.SingleOrDefault(user => user.ProfileId == profileId);
         }
+
+        public BoxUserProfile GetProfileByEmail(string email)
+        {
+            var result = (from idendity in _context.BoxIdentityUsers
+                          join profile in _context.BoxUserProfiles on idendity.IdentitytId equals profile.IdentitytId
+                          where idendity.Email == email
+                          select profile).FirstOrDefault();
+            return result;
+        }
+       
         #endregion
 
     }

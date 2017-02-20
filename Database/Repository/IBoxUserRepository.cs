@@ -12,5 +12,7 @@ namespace Database.Repository
         BoxUserProfile GetUser(Guid profileId);
         BoxUserProfile GetUserAuthentication(string username, string password);
         IEnumerable<BoxUserProfile> GetUsers();
+        BoxUserProfile GetProfileByEmail(string email);
+        bool SaveProfile(BoxUserProfile profile);
     }
 }
