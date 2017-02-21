@@ -63,11 +63,6 @@ namespace src.Controllers
             return View();
         }
 
-        public IActionResult Register()
-        {
-            return View(model);
-        }
-
         public async Task<IActionResult> Logout()
         {
             if (User.Identity.IsAuthenticated)
@@ -77,9 +72,20 @@ namespace src.Controllers
             return RedirectToAction("index", "home");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> RegisterNew(LoginModel model)
+        public IActionResult Register()
         {
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(LoginModel model)
+        {
+            var userAlreadyExist = await ResolveNewUserEmail(model.Username);
+            if (userAlreadyExist)
+            {
+                ModelState.AddModelError("", "User already exist with this email.");
+                return View();
+            }
             var id = Guid.NewGuid();
             BoxUserProfile profile = new BoxUserProfile()
             {
@@ -88,7 +94,12 @@ namespace src.Controllers
                 Active = false
             };
             await _userRepository.AddNewUser(profile, model.Username, model.Password);
-            return View("Index");
+            return RedirectToAction("index", "home");
+        }
+
+        private async Task<bool> ResolveNewUserEmail(string email)
+        {
+            return await _userRepository.UserExistByEmail(email);
         }
     }
 }

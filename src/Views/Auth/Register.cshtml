@@ -6,7 +6,7 @@
     <h3 class="plain-text">
         Register
     </h3>
-    @using (Html.BeginForm("RegisterNew", "Login", FormMethod.Post, htmlAttributes: new { @class = "register form-box", role = "form" }))
+    @using (Html.BeginForm("Register", "Auth", FormMethod.Post, htmlAttributes: new { @class = "register form-box", role = "form" }))
     {
         @Html.ValidationSummary(true)
         <div class="form-group">

@@ -10,7 +10,6 @@ namespace Database.Repository
         Task<bool> UserExistByEmail(string email);
         Task<bool> AddNewUser(BoxUserProfile user, string username, string password);
         BoxUserProfile GetUser(Guid profileId);
-        BoxUserProfile GetUserAuthentication(string username, string password);
         IEnumerable<BoxUserProfile> GetUsers();
         BoxUserProfile GetProfileByEmail(string email);
         bool SaveProfile(BoxUserProfile profile);

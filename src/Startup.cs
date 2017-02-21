@@ -13,6 +13,8 @@ using Database.Entities;
 using Database;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using src.ViewModel;
 
 namespace src
 {
@@ -39,6 +41,7 @@ namespace src
         {
             services.AddSingleton(Configuration);
 
+           
             services.AddIdentity<BoxIdentityUser, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
@@ -73,6 +76,11 @@ namespace src
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<BoxUserProfile, UserProfile>().ReverseMap();
+            });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

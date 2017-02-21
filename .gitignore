@@ -4,7 +4,12 @@ src/bin
 src/node_modules
 src/obj
 src/_tranpiled
+src/wwwroot/appScript
+src/wwwroot/appStyles.css
+src/wwwroot/appStyles.css.map
+
 
 Database/bin
 Database/Migrations
 Database/obj
+

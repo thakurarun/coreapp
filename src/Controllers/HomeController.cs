@@ -10,6 +10,7 @@ using Database.Repository;
 
 namespace src.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private SignInManager<BoxIdentityUser> _signInMnager;
@@ -20,8 +21,7 @@ namespace src.Controllers
             _signInMnager = signInMnager;
             _userRepository = userRepository;
         }
-
-        [Authorize]
+        
         public IActionResult Index()
         {
             BoxUserProfile profile = _userRepository.GetProfileByEmail(User.Identity.Name);
@@ -29,6 +29,12 @@ namespace src.Controllers
                 return View(profile);
             else
                 return View(profile);
+        }
+
+        public IActionResult EditProfile()
+        {
+            BoxUserProfile profile = _userRepository.GetProfileByEmail(User.Identity.Name);
+            return View("EditProfile", profile);
         }
 
         [HttpPost]
@@ -42,7 +48,7 @@ namespace src.Controllers
             {
                 ModelState.AddModelError("", "Some fields are missing");
             }
-            return View("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

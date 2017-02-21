@@ -26,14 +26,7 @@ namespace Database.Repository
                 return false;
             return true;
         }
-
-        public BoxUserProfile GetUserAuthentication(string username, string password)
-        {
-            //return _context.BoxUsers.FirstOrDefault(user =>
-            //(user.Username == username || user.Email == username)
-            //&& user.Password == password);
-            return null;
-        }
+        
         #endregion
 
         #region Add or Update
