@@ -42,9 +42,23 @@ namespace Database.Repository
             if (identity.Succeeded)
             {
                 user.CreationDate = DateTime.UtcNow;
+                user.Organization = new Organization
+                {
+                    Active = false,
+                    OrganizationId = Guid.NewGuid()
+                };
+                await _context.Organizations.AddAsync(user.Organization);
                 await _context.BoxUserProfiles.AddAsync(user);
-                await _context.SaveChangesAsync();
-                return identity.Succeeded;
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    return identity.Succeeded;
+                }
+                catch
+                {
+                    var deleteUser = await _userManager.FindByEmailAsync(boxUser.Email);
+                    await _userManager.DeleteAsync(deleteUser);
+                }
             }
             throw new Exception($"{nameof(AddNewUser)}:" +
                 $" User identity not created");

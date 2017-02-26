@@ -57,6 +57,7 @@ namespace src
             // Add framework services.
             services.AddDbContext<Database.BlueBoxContext>();
             services.AddScoped<IBoxUserRepository, BoxUserRepository>();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
 
             services.AddMvc(config =>
             {

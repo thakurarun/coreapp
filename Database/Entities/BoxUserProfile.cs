@@ -18,5 +18,8 @@ namespace Database.Entities
 
         public DateTime CreationDate { get; set; } = DateTime.UtcNow;
         public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
+
+        public Guid OrganizationId { get; set; }
+        public virtual Organization Organization { get; set; }
     }
 }

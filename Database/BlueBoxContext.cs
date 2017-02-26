@@ -19,6 +19,7 @@ namespace Database
 
         public DbSet<BoxUserProfile> BoxUserProfiles { get; set; }
         public DbSet<BoxIdentityUser> BoxIdentityUsers { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

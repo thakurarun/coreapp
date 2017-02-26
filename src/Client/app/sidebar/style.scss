@@ -1,24 +1,31 @@
 @import '../../../Views/variables.scss';
 
 .leftpane {
-        padding-top: 20px;
-        background-color: $headerColor;
-        display: inline-block;
-        height: 100%;
-        position: fixed;
-        width: 15%;
-        ul {
-            list-style: none;
-            display: inline-flex;
-            flex-direction: column;
-            align-content: space-between;
+    padding-top: 10px;
+    background-color: $darkBackgroundColor;
+    border-right-style: solid;
+    border-color: #d300fc;
+    border-width: 1px;
+    display: flex;
+    height: 100%;
+    position: fixed;
+    width: 15%;
 
-            li {
-                padding: 10px 20px 20px 20px;
+    ul {
+        list-style: none;
+        display: inline-flex;
+        flex-direction: column;
+        align-content: space-between;
 
-                a {
-                    color: $linkTextColor;
-                }
+        li {
+            padding: 10px 20px 20px 20px;
+            border-bottom-color:$plainTextColor;
+            border-bottom-width:1px;
+            border-bottom-style:solid;
+
+            a {
+                color: $plainTextColor;
             }
         }
     }
+}
