@@ -1,0 +1,13 @@
+﻿@import '../../Views/variables.scss';
+.main-content {
+    display: flex;
+    width: 85%;
+    float: right;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    label {
+        color: $textColor;
+        font-size: 0.85em;
+    }
+}

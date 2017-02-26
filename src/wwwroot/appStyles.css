@@ -60,34 +60,6 @@ html, body {
     color: #b22a2a;
     list-style: none; }
 
-.dashboard .leftpane {
-  padding-top: 20px;
-  background-color: #3b5998;
-  display: inline-block;
-  height: 100%;
-  position: fixed;
-  width: 15%; }
-  .dashboard .leftpane ul {
-    list-style: none;
-    display: inline-flex;
-    flex-direction: column;
-    align-content: space-between; }
-    .dashboard .leftpane ul li {
-      padding: 10px 20px 20px 20px; }
-      .dashboard .leftpane ul li a {
-        color: #f8f8f8; }
-
-.dashboard .main-content {
-  display: flex;
-  width: 85%;
-  float: right;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 50px; }
-  .dashboard .main-content label {
-    color: #3b5998;
-    font-size: 0.85em; }
-
 .form-center {
   display: flex;
   align-items: center;
@@ -101,5 +73,32 @@ html, body {
     .form-center .other a {
       color: #3b5998;
       cursor: pointer; }
+
+.leftpane {
+  padding-top: 20px;
+  background-color: #3b5998;
+  display: inline-block;
+  height: 100%;
+  position: fixed;
+  width: 15%; }
+  .leftpane ul {
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-content: space-between; }
+    .leftpane ul li {
+      padding: 10px 20px 20px 20px; }
+      .leftpane ul li a {
+        color: #f8f8f8; }
+
+.main-content {
+  display: flex;
+  width: 85%;
+  float: right;
+  flex-direction: column;
+  align-items: flex-start; }
+  .main-content label {
+    color: #3b5998;
+    font-size: 0.85em; }
 
 /*# sourceMappingURL=appStyles.css.map*/

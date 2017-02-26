@@ -1,0 +1,22 @@
+﻿<span *ngIf="userProfile && !editMode">
+  {{welcomeMessage}} {{userProfile.firstName}} {{userProfile.lastName}}
+    <button class="btn default" (click)="editProfile()">Edit</button>
+</span>
+
+<div *ngIf="editMode">
+    <form role="form" name="userProfile">
+        <div class="form-group">
+            <label class="control-label" for="firstName">First Name</label>
+            <input type="text" class="form-control" placeholder="Enter first name" name="firstname" [(ngModel)]="userProfile.firstName">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="lastName">Last Name</label>
+            <input type="text" class="form-control" placeholder="Enter last name" name="lastname" [(ngModel)]="userProfile.lastName">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="contact">Contact</label>
+            <input type="number" class="form-control" placeholder="Enter contact" name="contact" [(ngModel)]="userProfile.contact">
+        </div>
+    </form>
+    <button class="btn default" (click)="saveProfile()">Save</button>
+</div>

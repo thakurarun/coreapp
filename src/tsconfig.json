@@ -6,12 +6,21 @@
     "noImplicitAny": false,
     "removeComments": false,
     "sourceMap": true,
-    "strictNullChecks": true,
     "target": "es5",
     "watch": false,
-    "rootDir": "Content",
-    "outDir": "_tranpiled" // this folder is not used, it is a hack to ignore transpiled js genrated by IDE.
+    "rootDir": "./Client",
+    "outDir": "_tranpiled", // this folder is not used, it is a hack to ignore transpiled js genrated by IDE.
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [ "node" ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
   },
+  "files": [
+    "./Client/main.ts"
+  ],
   "exclude": [
     "node_modules",
     "wwwroot"

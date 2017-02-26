@@ -13,10 +13,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Client\node_modules\**" />
     <Compile Remove="_tranpiled\**" />
+    <Content Remove="Client\node_modules\**" />
     <Content Remove="_tranpiled\**" />
+    <EmbeddedResource Remove="Client\node_modules\**" />
     <EmbeddedResource Remove="_tranpiled\**" />
+    <None Remove="Client\node_modules\**" />
     <None Remove="_tranpiled\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Client\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\appStyles.css" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.2.0" />
@@ -37,6 +49,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Client\app\sidebar\" />
     <Folder Include="Controllers\Api\" />
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>

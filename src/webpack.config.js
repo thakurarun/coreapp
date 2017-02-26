@@ -4,12 +4,12 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map',
-    entry: './Content/app.ts',
+    entry: './Client/main.ts',
     module: {
         loaders: [
             {
                 test: /\.ts$/,
-                include: path.resolve(__dirname, "Content"),
+                include: path.resolve(__dirname, "Client"),
                 loader: 'ts-loader'
             },
             {
@@ -17,6 +17,10 @@ module.exports = {
                 test: /\.s(a|c)ss$/,
                 include: path.resolve(__dirname, "Views"),
                 loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' })
+            },
+            {
+                test: /\.html$/,
+                loader: "html-loader"
             }
         ]
     },

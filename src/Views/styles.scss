@@ -1,3 +1,5 @@
 ﻿@import 'Shared/layout.scss';
-@import 'Home/_home.scss';
 @import 'Auth/_login.scss';
+
+@import '../Client/app/sidebar/style.scss';
+@import '../Client/app/style.scss';

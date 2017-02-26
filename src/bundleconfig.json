@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "webpack.config.vendor.min.js",
+    "inputFiles": [
+      "webpack.config.vendor.js"
+    ]
+  }
+]

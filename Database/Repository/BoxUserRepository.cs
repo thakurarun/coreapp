@@ -26,7 +26,7 @@ namespace Database.Repository
                 return false;
             return true;
         }
-        
+
         #endregion
 
         #region Add or Update
@@ -52,7 +52,7 @@ namespace Database.Repository
 
         public bool SaveProfile(BoxUserProfile profile)
         {
-            var data = _context.BoxUserProfiles.FirstOrDefault(_profile => _profile.Id == profile.Id);
+            var data = _context.BoxUserProfiles.FirstOrDefault(_profile => _profile.ProfileId == profile.ProfileId);
             if (data != null)
             {
                 data.FirstName = profile.FirstName;
@@ -87,7 +87,7 @@ namespace Database.Repository
                           select profile).FirstOrDefault();
             return result;
         }
-       
+
         #endregion
 
     }

@@ -1,0 +1,58 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Blue Box</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/appStyles.css" />
+        <link href="~/fonts/Roboto/Roboto-Regular.ttf" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/appStyles.min.css" />
+    </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body class="application">
+    <nav class="navbar navbar-default navbar-fixed-top header">
+        <div class="container">
+            <div class="logo pull-left">
+                <img src="~/images/blue-logo.png" />
+            </div>
+            <ul class="nav nav-tabs pull-right">
+
+                <li role="presentation" class="menu-item"><a href="#">Contact</a></li>
+
+                <li role="presentation" class="menu-item">
+                    @Html.ActionLink("Logout", "Logout", "Auth", null, new { @class = "plain-text link" })
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <section>
+        <div class="body-content">
+            @RenderBody()
+        </div>
+    </section>
+
+    <environment names="Development">
+        @*<script src="~/lib/zone.js/dist/zone.js"></script>*@
+        <script src="https://unpkg.com/zone.js@0.7.7?main=browser"></script>
+        <script src="~/lib/reflect-metadata/Reflect.js"></script>
+        <script src="~/lib/system.js//dist/system.src.js"></script>
+        <script src="~/lib/vendor.js"></script>
+        <script src="~/appScript/bundle.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -78,7 +78,7 @@ namespace src
 
             Mapper.Initialize(config =>
             {
-                config.CreateMap<BoxUserProfile, UserProfile>().ReverseMap();
+                config.CreateMap<BoxUserProfile, UserProfileDTO>().ReverseMap();
             });
             
             if (env.IsDevelopment())

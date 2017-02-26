@@ -8,11 +8,13 @@ using Database.Repository;
 using AutoMapper;
 using src.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Database.Entities;
 
 namespace src.Controllers.Api
 {
     [Produces("application/json")]
     [Route("api/Profile")]
+    [Authorize]
     public class ProfileController : Controller
     {
         private IBoxUserRepository _userRepository;
@@ -22,13 +24,29 @@ namespace src.Controllers.Api
             _userRepository = userRepository;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult Get()
         {
-            var boxProfile = _userRepository.GetProfileByEmail("arun@mail.com");
-            var profile = Mapper.Map<UserProfile>(boxProfile);
+            var boxProfile = _userRepository.GetProfileByEmail(User.Identity.Name);
+            var profile = Mapper.Map<UserProfileDTO>(boxProfile);
             return Ok(profile);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] UserProfileDTO data)
+        {
+            if (ModelState.IsValid)
+            {
+                var profile = Mapper.Map<BoxUserProfile>(data);
+                _userRepository.SaveProfile(profile);
+                return Ok(profile);
+            }
+            else
+            {
+                ModelState.AddModelError("InvalidFields", "Please enter correct data.");
+            }
+
+            return BadRequest(ModelState);
         }
     }
 }
