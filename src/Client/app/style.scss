@@ -1,13 +1,36 @@
 ﻿@import '../../Views/variables.scss';
+
 .main-content {
     display: flex;
     width: 85%;
     float: right;
     flex-direction: column;
     align-items: flex-start;
-    
+
     label {
         color: $textColor;
         font-size: 0.85em;
+    }
+
+    .page-error {
+        background-color: $errorBackgroundColor;
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            li {
+                color: $errorTextColor;
+                padding-top: 5px;
+
+                &.model-error {
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }

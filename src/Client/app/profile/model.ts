@@ -5,3 +5,8 @@ export interface IUserProfileDTO {
     contact: string;
     active: boolean;
 }
+
+export interface IErrorMessage {
+    message: string;
+    type: string;
+}

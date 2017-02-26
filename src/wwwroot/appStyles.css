@@ -100,5 +100,19 @@ html, body {
   .main-content label {
     color: #3b5998;
     font-size: 0.85em; }
+  .main-content .page-error {
+    background-color: #fa7f69; }
+    .main-content .page-error ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 10px;
+      padding-right: 10px; }
+      .main-content .page-error ul li {
+        color: #b22a2a;
+        padding-top: 5px; }
+        .main-content .page-error ul li.model-error {
+          font-weight: bold; }
 
 /*# sourceMappingURL=appStyles.css.map*/

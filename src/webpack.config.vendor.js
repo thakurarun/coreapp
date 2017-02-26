@@ -21,7 +21,8 @@ module.exports = {
             "systemjs",
             "core-js",
             "rxjs",
-            "zone.js"
+            "zone.js",
+            "lodash"
         ]
     },
     module: {

@@ -1,8 +1,14 @@
 ﻿<span *ngIf="userProfile && !editMode">
-  {{welcomeMessage}} {{userProfile.firstName}} {{userProfile.lastName}}
-    <button class="btn default" (click)="editProfile()">Edit</button>
+    {{welcomeMessage}} {{userProfile.firstName}} {{userProfile.lastName}}
+    <a class="btn default" (click)="editProfile()">Edit</a>
 </span>
-
+<div *ngIf="hasError" class="page-error">
+    <ul>
+        <li *ngFor="let error of errorMessages" class="has-error" [ngClass]="{'model-error': error.type=='model'}">
+            {{error.message}}
+        </li>
+    </ul>
+</div>
 <div *ngIf="editMode">
     <form role="form" name="userProfile">
         <div class="form-group">
@@ -19,4 +25,5 @@
         </div>
     </form>
     <button class="btn default" (click)="saveProfile()">Save</button>
+    <button class="btn default" (click)="cancelSaveProfile()">Cancel</button>
 </div>

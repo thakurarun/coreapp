@@ -32,7 +32,11 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true
         }),
-        new ExtractTextPlugin("../appStyles.css")
+        new ExtractTextPlugin("../appStyles.css"),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./vendor-manifest.json')
+        })
     ],
     resolve: {
         extensions: ['.webpack.js', '.web.js', '.ts', '.js']

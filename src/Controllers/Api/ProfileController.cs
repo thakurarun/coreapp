@@ -43,7 +43,7 @@ namespace src.Controllers.Api
             }
             else
             {
-                ModelState.AddModelError("InvalidFields", "Please enter correct data.");
+                ModelState.AddModelError("", "Please enter correct data.");
             }
 
             return BadRequest(ModelState);
